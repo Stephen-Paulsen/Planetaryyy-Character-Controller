@@ -1,5 +1,6 @@
 # Planetaryyy-Character-Controller
-The main character controller for my upcoming games. Focused on dynamic movement interaction.
+The main character controller for my upcoming godot games.  
+Focused on dynamic movement interactions; featuring running, jumping, crouching, camera controls, and leaning.
 <br>
 <br>
 
