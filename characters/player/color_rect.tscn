@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://ctrsdirio57v"]
+
+[ext_resource type="Shader" uid="uid://cfh7jch2oiat7" path="res://characters/player/triple_window_purple_hud.gdshader" id="1_h40d6"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ij1e3"]
+shader = ExtResource("1_h40d6")
+shader_parameter/crystal_color = Color(0.06, 0, 0.06, 0.8)
+shader_parameter/radius = 0.570000027075
+shader_parameter/fresnel_power = 1.8
+
+[node name="ColorRect" type="ColorRect" unique_id=715225057]
+material = SubResource("ShaderMaterial_ij1e3")
+offset_right = 300.0
+offset_bottom = 300.0

@@ -1,0 +1,35 @@
+[gd_scene format=3 uid="uid://yakskdxsl4na"]
+
+[ext_resource type="Script" uid="uid://dbln5vvuks4kx" path="res://characters/player/control.gd" id="1_ebxjg"]
+[ext_resource type="PackedScene" uid="uid://ctrsdirio57v" path="res://characters/player/color_rect.tscn" id="2_m4she"]
+[ext_resource type="Material" uid="uid://baaog1m1bbf8t" path="res://characters/player/triple_window_shader.tres" id="3_rp471"]
+
+[node name="SubViewportContainer" type="SubViewportContainer" unique_id=1640172545]
+modulate = Color(1, 1, 1, 0)
+self_modulate = Color(1, 1, 1, 0)
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="SubViewport" type="SubViewport" parent="." unique_id=287529522]
+handle_input_locally = false
+size = Vector2i(4096, 4096)
+render_target_update_mode = 4
+
+[node name="Control" type="Control" parent="SubViewport" unique_id=1284797855]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_ebxjg")
+
+[node name="ColorRect" parent="SubViewport/Control" unique_id=715225057 instance=ExtResource("2_m4she")]
+material = ExtResource("3_rp471")
+layout_mode = 0
+offset_right = 500.0
+offset_bottom = 500.0
+color = Color(1, 1, 1, 0)
+
+[node name="StatList" type="VBoxContainer" parent="SubViewport/Control" unique_id=153101135]
+layout_mode = 0
+offset_left = 2.0
+offset_top = 14.0
+offset_right = 2.0
+offset_bottom = 14.0

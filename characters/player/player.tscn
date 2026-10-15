@@ -1,0 +1,127 @@
+[gd_scene format=3 uid="uid://dq8nmpr18pvqo"]
+
+[ext_resource type="Script" uid="uid://bqx05voskfy53" path="res://characters/player/player_1.gd" id="1_508ok"]
+[ext_resource type="Shader" uid="uid://djmnrjvy66tl5" path="res://characters/player/CurvedPlayerHud.gdshader" id="2_exd8k"]
+[ext_resource type="PackedScene" uid="uid://yakskdxsl4na" path="res://characters/player/PlayerHud.tscn" id="2_xxgcw"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_b886q"]
+radius = 0.18
+height = 0.9
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_508ok"]
+radius = 0.08
+height = 0.7
+
+[sub_resource type="SphereMesh" id="SphereMesh_nsmuo"]
+radius = 0.1
+height = 0.2
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_exd8k"]
+render_priority = 0
+shader = ExtResource("2_exd8k")
+shader_parameter/hud_fov_h = 100.0
+shader_parameter/hud_fov_v = 80.0
+shader_parameter/hud_scale = Vector2(0.045, 0.052)
+shader_parameter/hud_offset = Vector2(0.061, 0.939)
+shader_parameter/center_width = 0.75100003241262
+shader_parameter/center_height = 1.15000005136512
+shader_parameter/center_softness = 10.0
+shader_parameter/side_width = 0.296
+shader_parameter/side_height = 0.895
+shader_parameter/window_spacing = 2.1
+shader_parameter/side_softness = 10.0
+shader_parameter/side_warp = 0.95
+
+[sub_resource type="SphereMesh" id="SphereMesh_b886q"]
+material = SubResource("ShaderMaterial_exd8k")
+radius = 0.1
+height = 0.2
+
+[sub_resource type="SphereMesh" id="SphereMesh_sbhvm"]
+radius = 0.05
+height = 0.1
+radial_segments = 8
+rings = 4
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_xq8dw"]
+top_radius = 0.015
+bottom_radius = 0.01
+height = 0.08
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_508ok"]
+radius = 0.18
+height = 1.8
+
+[node name="PlayerRB3D" type="RigidBody3D" unique_id=344772751]
+collision_layer = 2
+mass = 90.0
+can_sleep = false
+continuous_cd = true
+contact_monitor = true
+max_contacts_reported = 20
+script = ExtResource("1_508ok")
+
+[node name="PlayerCS3D" type="CollisionShape3D" parent="." unique_id=1916603990]
+shape = SubResource("CapsuleShape3D_b886q")
+debug_color = Color(0.99607843, 0, 0.23137255, 0.73333335)
+
+[node name="PlayerMI3D" type="MeshInstance3D" parent="." unique_id=1340555887]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.1, 0)
+mesh = SubResource("CapsuleMesh_508ok")
+
+[node name="FirstPersonViewC3D" type="Camera3D" parent="." unique_id=790301282]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.35, 0)
+
+[node name="ThirdPersonViewSA3D" type="SpringArm3D" parent="FirstPersonViewC3D" unique_id=868843689]
+transform = Transform3D(1, 0, 0, 0, 0.8660254, 0.5, 0, -0.5, 0.8660254, 0, 0, 0)
+spring_length = 1.495
+
+[node name="ThirdPersonViewC3D" type="Camera3D" parent="FirstPersonViewC3D/ThirdPersonViewSA3D" unique_id=1669982865]
+
+[node name="HeadMI3D" type="MeshInstance3D" parent="FirstPersonViewC3D" unique_id=747738268]
+mesh = SubResource("SphereMesh_nsmuo")
+
+[node name="HelmetHudMI3D" type="MeshInstance3D" parent="FirstPersonViewC3D" unique_id=297158154]
+mesh = SubResource("SphereMesh_b886q")
+
+[node name="SubViewportContainer" parent="FirstPersonViewC3D" unique_id=1640172545 instance=ExtResource("2_xxgcw")]
+
+[node name="OmniLight3D" type="OmniLight3D" parent="." unique_id=667035829]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.8, 0.5844874)
+omni_attenuation = 1.5
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="OmniLight3D" unique_id=1757872599]
+visible = false
+mesh = SubResource("SphereMesh_sbhvm")
+
+[node name="SpotLight3D" type="SpotLight3D" parent="." unique_id=1964413652]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.19)
+visible = false
+light_color = Color(1, 1, 0.54901963, 1)
+spot_range = 20.0
+spot_attenuation = 1.2
+spot_angle = 40.0
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="SpotLight3D" unique_id=2082117024]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0)
+mesh = SubResource("CylinderMesh_xq8dw")
+
+[node name="GravityDetectorA3D" type="Area3D" parent="." unique_id=1475688488]
+collision_layer = 2
+collision_mask = 32
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="GravityDetectorA3D" unique_id=1360969399]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.45, 0)
+shape = SubResource("CapsuleShape3D_508ok")
+
+[node name="HipsN3D" type="Node3D" parent="." unique_id=1123644258]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.44, 0)
+
+[node name="GroundRC3D" type="RayCast3D" parent="HipsN3D" unique_id=74911276]
+target_position = Vector3(0, -0.91, 0)
+debug_shape_custom_color = Color(0.9098039, 0, 0.07058824, 0.5294118)
+debug_shape_thickness = 5
+
+[node name="GravityRC3D" type="RayCast3D" parent="HipsN3D" unique_id=1986800007]
+target_position = Vector3(0, -100, 0)
+debug_shape_custom_color = Color(0, 1, 1, 0.5294118)

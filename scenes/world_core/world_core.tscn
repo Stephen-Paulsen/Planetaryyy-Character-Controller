@@ -1,0 +1,75 @@
+[gd_scene format=3 uid="uid://bcgur2l7xfl6p"]
+
+[ext_resource type="PackedScene" uid="uid://dq8nmpr18pvqo" path="res://characters/player/player.tscn" id="1_a6jco"]
+[ext_resource type="Script" uid="uid://cb7fp5lepye0m" path="res://scenes/world_core/world.gd" id="1_xq8dw"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_4idpq"]
+radius = 25.0
+height = 50.0
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_ligh8"]
+radius = 25.0
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_dh7ks"]
+radius = 200.0
+
+[sub_resource type="SphereMesh" id="SphereMesh_xq8dw"]
+radius = 25.0
+height = 50.0
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_v80f4"]
+radius = 25.0
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_xpnlc"]
+radius = 200.0
+
+[node name="WorldCore" type="Node3D" unique_id=368814887]
+script = ExtResource("1_xq8dw")
+
+[node name="StarterPlanetSB3D" type="StaticBody3D" parent="." unique_id=1199014807]
+
+[node name="StarterPlanetMI3D" type="MeshInstance3D" parent="StarterPlanetSB3D" unique_id=1685672713]
+mesh = SubResource("SphereMesh_4idpq")
+
+[node name="StarterPlanetCS3D" type="CollisionShape3D" parent="StarterPlanetSB3D" unique_id=680701499]
+shape = SubResource("SphereShape3D_ligh8")
+debug_color = Color(0.101960786, 0.5176471, 0, 0.75686276)
+
+[node name="StarterPlanetGravityA3D" type="Area3D" parent="StarterPlanetSB3D" unique_id=244540008]
+collision_layer = 32
+collision_mask = 2
+priority = 1
+gravity_space_override = 1
+gravity_point = true
+gravity_point_center = Vector3(0, 0, 0)
+gravity_direction = Vector3(0, 0, 0)
+
+[node name="StarterPlanetGravityCS3D" type="CollisionShape3D" parent="StarterPlanetSB3D/StarterPlanetGravityA3D" unique_id=1850437510]
+shape = SubResource("SphereShape3D_dh7ks")
+debug_color = Color(3.3691526e-06, 0.5843655, 0.78366315, 1)
+
+[node name="SecondPlanetSB3D" type="StaticBody3D" parent="." unique_id=1208420366]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 226.93, 0, 0)
+
+[node name="SecondPlanetMI3D" type="MeshInstance3D" parent="SecondPlanetSB3D" unique_id=256368407]
+mesh = SubResource("SphereMesh_xq8dw")
+
+[node name="SecondPlanetCS3D" type="CollisionShape3D" parent="SecondPlanetSB3D" unique_id=736699714]
+shape = SubResource("SphereShape3D_v80f4")
+debug_color = Color(0.7187591, 0.25335208, 9.62615e-08, 0.75686276)
+
+[node name="SecondPlanetGravityA3D" type="Area3D" parent="SecondPlanetSB3D" unique_id=258415615]
+collision_layer = 32
+collision_mask = 2
+priority = 1
+gravity_space_override = 1
+gravity_point = true
+gravity_point_center = Vector3(0, 0, 0)
+gravity_direction = Vector3(0, 0, 0)
+
+[node name="SecondPlanetGravityCS3D" type="CollisionShape3D" parent="SecondPlanetSB3D/SecondPlanetGravityA3D" unique_id=1638959145]
+shape = SubResource("SphereShape3D_xpnlc")
+debug_color = Color(1, 1, 0, 1)
+
+[node name="PlayerRB3D" parent="." unique_id=344772751 instance=ExtResource("1_a6jco")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 27.391865, 0)

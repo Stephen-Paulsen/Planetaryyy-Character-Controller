@@ -1,0 +1,15 @@
+[gd_resource type="ShaderMaterial" format=3 uid="uid://baaog1m1bbf8t"]
+
+[ext_resource type="Shader" uid="uid://cfh7jch2oiat7" path="res://characters/player/triple_window_purple_hud.gdshader" id="1_gfick"]
+
+[resource]
+shader = ExtResource("1_gfick")
+shader_parameter/crystal_color = Color(0.0627451, 0, 0.16470589, 0.37254903)
+shader_parameter/border_thickness = 0.02400000114
+shader_parameter/softness = 0.00999999977648
+shader_parameter/center_width = 0.272
+shader_parameter/center_height = 0.48
+shader_parameter/side_width = 0.104
+shader_parameter/side_height = 0.37
+shader_parameter/side_spacing = 0.777
+shader_parameter/side_warp = 2.7
