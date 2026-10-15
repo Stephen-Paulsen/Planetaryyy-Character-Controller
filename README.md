@@ -1,26 +1,31 @@
 # Planetaryyy-Character-Controller
 The main character controller for my upcoming games. Focused on dynamic movement interaction.
-
+<br>
+<br>
 
 ## Controls
 
-Forward: W
-Backward: S
-Right: D
-Left: A
-Jump: Space
-Crouch: Ctrl
-Run: Shift
-HelmetHud: Mouse Thumb Button 2
-CameraChange: Mouse Thumb Button 1
-LeftClick: Left Mouse Button
-RightClick: Right Mouse Button
-TopRight: E
-TopLeft: Q
+Forward: W  
+Backward: S  
+Right: D  
+Left: A  
+Jump: Space  
+Crouch: Ctrl  
+Run: Shift  
+HelmetHud: Mouse Thumb Button 2  
+CameraChange: Mouse Thumb Button 1  
+LeftClick: Left Mouse Button  
+RightClick: Right Mouse Button  
+LeanRight: E  
+LeanLeft: Q  
 
-Don't have mouse thumb buttons? Womp womp, change the controls in the godot project settings.
+# Don't have mouse thumb buttons? 
+Womp womp, change the controls in the godot project settings.  
 I'll add a dedicated menu ingame in the future to change the controls easier. :3
-
+<br>
+<br>
+<br>
+<br>
 
 ## Licensing
 
